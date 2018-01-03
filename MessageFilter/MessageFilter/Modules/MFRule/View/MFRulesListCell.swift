@@ -10,10 +10,15 @@ import UIKit
 
 class MFRulesListCell: MFBaseTCell {
     
+    //获取cell高度
+    class func getRulesListCellHeight() -> CGFloat {
+        return getHeightScaleWith6s() * 40
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         if !self.isEqual(nil) {
-            
+//            self.contentView.addSubview(self.typeView)
         }
     }
     
@@ -21,11 +26,21 @@ class MFRulesListCell: MFBaseTCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        self.typeView.snp.makeConstraints { (maker) in
+//            maker.size.equalTo(CGSize(width: getWidthScaleWith6s()*25, height: getWidthScaleWith6s()*25))
+//            maker.centerY.equalTo(self.contentView)
+//            maker.left.equalTo(getWidthScaleWith6s()*10)
+//        }
+//    }
     
     
     //MARK: - lazy
-    lazy var typeLB: UILabel = {
-        let typeLB = UILabel()
-        return typeLB
+    lazy var typeView: UIImageView = {
+        let typeView = UIImageView()
+        typeView.image = UIImage.init(named: "ruleList_people")
+        return typeView
     }()
 }

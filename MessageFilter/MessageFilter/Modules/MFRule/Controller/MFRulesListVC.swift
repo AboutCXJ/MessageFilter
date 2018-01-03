@@ -8,8 +8,6 @@
 
 import UIKit
 
-fileprivate let MFRulesListVCCellID = "MFRulesListVCCellID"
-
 //规则列表
 class MFRulesListVC: BaseVC {
 
@@ -33,9 +31,10 @@ class MFRulesListVC: BaseVC {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
+        tableView.rowHeight = MFRulesListCell.getRulesListCellHeight()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(MFRulesListCell.self, forCellReuseIdentifier: MFRulesListVCCellID)
+        tableView.register(MFRulesListCell.self)
         self.view.addSubview(tableView)
         return tableView
     }()
@@ -56,12 +55,11 @@ extension MFRulesListVC: UITableViewDelegate {
 extension MFRulesListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 1000
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MFRulesListVCCellID, for: indexPath) as! MFRulesListCell
-        cell.textLabel?.text = String(indexPath.row)
+        let cell = tableView.dequeueReusableCell(with: MFRulesListCell.self, for: indexPath)
         return cell
     }
 }
