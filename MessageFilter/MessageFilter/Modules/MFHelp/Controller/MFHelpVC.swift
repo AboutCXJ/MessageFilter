@@ -1,5 +1,5 @@
 //
-//  MFRulesListVC.swift
+//  MFHelpVC.swift
 //  MessageFilter
 //
 //  Created by sfzx on 2018/1/2.
@@ -8,11 +8,15 @@
 
 import UIKit
 
-//规则列表
-class MFRulesListVC: UIViewController {
+class MFHelpVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupUI()
     }
+    
+    func setupUI() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
 }

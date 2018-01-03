@@ -15,7 +15,7 @@ class MFTabBarCtr: UITabBarController {
         self.addChildViewController(childController: MFRulesListVC(), title: "规则", imageName: "tabbar_rule")
         
         
-        self.addChildViewController(childController: MFDescribeVC(), title: "帮助", imageName: "tabbar_message")
+        self.addChildViewController(childController: MFHelpVC(), title: "帮助", imageName: "tabbar_help")
     }
     
     //添加子控制器
