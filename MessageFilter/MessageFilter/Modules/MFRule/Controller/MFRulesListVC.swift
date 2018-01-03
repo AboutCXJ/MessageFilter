@@ -11,33 +11,38 @@ import UIKit
 fileprivate let MFRulesListVCCellID = "MFRulesListVCCellID"
 
 //规则列表
-class MFRulesListVC: UIViewController {
+class MFRulesListVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
     }
     
-    func setupUI() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+    override func viewWillLayoutSubviews() {
+        self.tableView.snp.makeConstraints { (maker) in
+            maker.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0))
+        }
     }
     
-    override func viewWillLayoutSubviews() {
-        self.tableView.frame = self.view.bounds
+    func setupUI() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
     //MARK: - lazy
     lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MFRulesListVCCellID)
+        tableView.register(MFRulesListCell.self, forCellReuseIdentifier: MFRulesListVCCellID)
         self.view.addSubview(tableView)
         return tableView
     }()
 }
 
+
+//MARK: - @protocol UITableViewDelegate
 extension MFRulesListVC: UITableViewDelegate {
     
     //左滑删除
@@ -46,6 +51,8 @@ extension MFRulesListVC: UITableViewDelegate {
     }
 }
 
+
+//MARK: - @protocol UITableViewDataSource
 extension MFRulesListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,7 +60,7 @@ extension MFRulesListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: MFRulesListVCCellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: MFRulesListVCCellID, for: indexPath) as! MFRulesListCell
         cell.textLabel?.text = String(indexPath.row)
         return cell
     }

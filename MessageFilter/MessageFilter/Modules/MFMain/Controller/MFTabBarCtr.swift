@@ -24,7 +24,7 @@ class MFTabBarCtr: UITabBarController {
         childController.title = title
         childController.tabBarItem.image = UIImage(named: imageName)
 
-        self.addChildViewController(UINavigationController(rootViewController: childController))
+        self.addChildViewController(BaseNC(rootViewController: childController))
         
     }
 

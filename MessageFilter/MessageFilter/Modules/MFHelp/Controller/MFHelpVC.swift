@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MFHelpVC: UIViewController {
+class MFHelpVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
