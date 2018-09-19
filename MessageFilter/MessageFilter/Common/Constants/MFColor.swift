@@ -12,12 +12,16 @@ class MFColor: UIColor {
     
     //分割线颜色
     class func getseparatorColor() -> UIColor {
-        return self.hex2RGB(hex: "DBDBDB", alpha: 1.0)
+        return self.hex2RGB(hex: "BEBEC3", alpha: 1.0)
     }
     
     //背景色
     class func getBackGroundColor() -> UIColor {
         return self.hex2RGB(hex: "f1f1f1", alpha: 1.0)
+    }
+    
+    class func getTitleColor() -> UIColor {
+        return .black
     }
     
     //MARK:16进制转RGB

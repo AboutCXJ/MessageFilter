@@ -16,7 +16,6 @@ class MFHelpVC: BaseVC {
     }
     
     func setupUI() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
-
 }

@@ -8,6 +8,7 @@
 
 import IdentityLookup
 
+
 final class MessageFilterExtension: ILMessageFilterExtension {}
 
 extension MessageFilterExtension: ILMessageFilterQueryHandling {
@@ -45,7 +46,12 @@ extension MessageFilterExtension: ILMessageFilterQueryHandling {
     
     private func offlineAction(for queryRequest: ILMessageFilterQueryRequest) -> ILMessageFilterAction {
         // Replace with logic to perform offline check whether to filter first (if possible).
-        return .none
+        if MFRulesModel.isFilterMessageRequest(queryRequest) {
+            return .filter
+        }else {
+            return .allow
+        }
+
     }
     
     private func action(for networkResponse: ILNetworkResponse) -> ILMessageFilterAction {

@@ -13,6 +13,7 @@ class MFBaseTCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         if !self.isEqual(nil) {
             self.addSubview(self.separatorLine)
+            self.selectionStyle = .none
         }
     }
     
@@ -25,7 +26,7 @@ class MFBaseTCell: UITableViewCell {
         self.separatorLine.snp.makeConstraints { (maker) in
             maker.height.equalTo(getHeightScaleWith6s()*0.5)
             maker.bottom.right.equalTo(self)
-            maker.left.equalTo(getWidthScaleWith6s()*10)
+            maker.left.equalTo(getWidthScaleWith6s()*20)
         }
     }
     
